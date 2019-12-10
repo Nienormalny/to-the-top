@@ -105,7 +105,7 @@ main.rotated .grid {
 
 #start-game {
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgb(32, 185, 255);
@@ -221,7 +221,7 @@ main.rotated .grid {
     width: 50px;
     height: 50px;
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
     left: 15px;
     box-shadow: 2px 2px 0px 1px #1f1f1f;
     outline: none;
@@ -400,16 +400,60 @@ main.rotated .grid {
 }
 #hiscore-table table {
     border-collapse: collapse;
+    max-height: calc(100% - 300px);
+    display: block;
+    overflow: auto;
+    border-radius: 5px;
 }
 #hiscore-table table thead {
     background-color: rgb(243, 105, 26);
 }
 #hiscore-table table thead th {
-    padding: 10px 15px;
+    padding: 5px;
     color: white;
     letter-spacing: 1px;
     font-weight: normal;
     text-transform: uppercase;
+    font-weight: bold;
+}
+#hiscore-table table thead th:not(:first-child) {
+    min-width: 100px;
+}
+#hiscore-table tbody tr:nth-child(even) {
+    background-color: #ff9e0d;
+}
+#hiscore-table tbody tr:nth-child(odd) {
+    background-color: #ffc919;
+}
+#hiscore-table tbody td {
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+#footer {
+    background-color: #333;
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+#footer a {
+    color: white;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+#footer a:hover {
+    color: rgb(32, 185, 255);
 }
 
 @media only screen and (max-width: 414px) {

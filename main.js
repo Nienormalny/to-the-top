@@ -3,8 +3,8 @@
 window.onload = () => {
     console.log('JS LOADED');
     const regexpArray = [
-        /\w*(huj|pizda|kurwa|pojeb|jebaniec|popierdoleniec|popierdolony|chuj|chujek|penis|cipa|fiut|spierdolina|kurwik|kurwiszon|motherfucker|fucker|whore|hure|verfickte|matkojebca|pedal|pedał|zjeb|sukinsyn|suka|dziwka|kurewka|skurwiel|skurwysyn|fuggot|cock|pussy|fotze|schwanz)\w*/i,
-        /\w*(pornhub|xvideos|youporn)\w*/i
+        /\w*(huj|pizda|kurwa|pojeb|jebaniec|popierdoleniec|popierdolony|chuj|chujek|penis|cipa|fiut|spierdolina|kurwik|kurwiszon|motherfucker|fucker|whore|hure|verfickte|matkojebca|pedal|pedał|zjeb|sukinsyn|suka|dziwka|kurewka|skurwiel|skurwysyn|fuggot|cock|pussy|fotze|schwanz|dupa|cwel|wyruchany|jebaka)\w*/i,
+        /\w*(pornhub|xvideos|youporn|porn|adult|xxx)\w*/i
     ];
     const gameContainer = document.getElementById('game-container');
     const livesContainer = document.getElementById('lives-container');
