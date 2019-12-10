@@ -1,0 +1,423 @@
+@keyframes pulse {
+    0% {
+        width: 95%;
+    } 100% {
+        width: 100%;
+    }
+}
+* {
+    font-family: 'Arial';
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(50,50,50);
+background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(39,39,39,1) 53%, rgba(0,0,0,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+main {
+    display: block;
+    flex-wrap: wrap;
+    width: 414px;
+    height: calc(100vh - 100px);
+    max-height: 736px;
+    background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 100%);
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: 3px 3px 45px 10px black;
+}
+main.rotated {
+    background: rgb(79,79,79);
+    background: radial-gradient(circle, rgba(79,79,79,1) 0%, rgba(20,20,20,1) 100%);
+}
+main.rotated .grid {
+    background-color: white;
+}
+
+#game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    transition: all 0.5s ease;
+}
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dadada;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+}
+#lives-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+.live {
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+.score-container {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    background-color: rgb(255, 186, 58);
+    color: white;
+}
+.score-text {
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #333;
+    padding: 10px;
+}
+#score-container {
+    font-size: 30px;
+    padding: 5px 10px;
+}
+.object {
+    position: absolute;
+    background-color: rgb(32, 185, 255);
+    border-radius: 5px;
+    display: block;
+    transition: all 0.3s ease;
+    /* box-shadow: 3px 3px 12px -5px #333333; */
+}
+
+#start-game {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(32, 185, 255);
+    color: white;
+    border: 0;
+    padding: 10px 25px;
+    font-size: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0px 2px #0077ff;
+}
+#start-game:hover {
+    background-color: #0077ff;
+    font-size: 23px;
+}
+.multiply {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -70px;
+    font-size: 35px;
+    color: white;
+    padding: 10px;
+    background-color: rgb(32, 185, 255);
+    transition: all 0.5s ease;
+}
+#new-object {
+    display: block;
+    background-color: rgb(0, 202, 101);
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 30px;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    height:30px;
+    line-height:30px;
+    font-size: 10px;
+    width: 0;
+}
+#new-object:after {
+    content: 'new object';
+    display: block;
+    position: absolute;
+    z-index: 999;
+    word-break: break-all;
+    top: 0;
+    left: 10px;
+}
+#next-multiply {
+    display: block;
+    background-color: rgb(32, 185, 255);
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    height:30px;
+    line-height:30px;
+    font-size: 10px;
+    width: 0;
+}
+#next-multiply:after {
+    content: 'next multiply';
+    display: block;
+    position: absolute;
+    z-index: 999;
+    word-break: break-all;
+    top: 0;
+    left: 10px;
+}
+#main-screen {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#game-start-counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    font-size: 20em;
+    color: #333;
+    transform:translate(-50%, -50%);
+}
+.main-logo {
+    margin: auto;
+    /* animation-name: pulse; */
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1s;
+}
+.hide {
+    display: none !important;
+}
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+.blur {
+    filter: blur(4px);
+}
+#btn-settings {
+    background-color: #333;
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 25px;
+    left: 15px;
+    box-shadow: 2px 2px 0px 1px #1f1f1f;
+    outline: none;
+    cursor: pointer;
+}
+#btn-hiscore {
+    background-color: rgb(255, 174, 0);
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 11;
+    padding: 10px;
+    box-shadow: 2px 2px 0px 1px #ff8d00;
+    outline: none;
+    cursor: pointer;
+}
+#btn-settings img {
+    display: block;
+    width: 100%;
+}
+#btn-hiscore img {
+    display: block;
+    width: 100%;
+}
+#btn-yt {
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    box-shadow: 2px 2px 0px 1px #d10101;
+    outline: none;
+    cursor: pointer;
+}
+#btn-yt img {
+    display: block;
+    width: 100%;
+}
+.btn {
+    background-color: rgb(63, 63, 63);
+    border: 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn.active {
+    background-color: rgb(90, 253, 163);
+    color: #333;
+    font-size: 16px;
+}
+#settings {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    top: -300px;
+    transition: all 0.5s ease;
+}
+#settings.open {
+    top: 0;
+}
+#settings p {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+    margin-top: 0;
+    font-size: 20px;
+}
+#settings .setting:not(:last-child) {
+    margin-bottom: 25px;
+}
+#finish {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+.finish-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+}
+#finish h1,
+#finish h2,
+#finish h3,
+#finish p {
+    text-align: center;
+    margin: 0;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#finish h1 {
+    background-color: rgb(0, 197, 89);
+    border-radius: 5px 5px 0 0;
+}
+#finish h2 {
+    background-color: rgb(255, 146, 22);
+}
+#finish h3 {
+    background-color: rgb(238, 28, 28);
+    border-radius: 0 0 5px 5px;
+}
+#finish p {
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    margin-top: 25px;
+    background-color: rgb(171, 118, 255);
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
+}
+#finish input {
+    text-align: center;
+    color: #333;
+    padding: 10px;
+    border: 0;
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-size: 18px;
+    outline: none;
+    text-transform: capitalize;
+    border-radius: 0 0 5px 5px;
+    border: 2px solid rgb(171, 118, 255);
+    border-top: 0;
+}
+#finish input.has-error,
+#finish input.has-error-bad-word {
+    border: 2px solid rgb(238, 28, 28);
+    position: relative;
+}
+#finish button {
+    text-align: center;
+    background-color: rgb(32, 185, 255);
+    color: white;
+    padding: 10px;
+    border: 0;
+    font-size: 18px;
+    outline: none;
+    border-radius: 5px;
+}
+
+#hiscore-table {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -725px;
+    height: 684px;
+    transition: all 0.5s ease;
+}
+#hiscore-table.open {
+    top: 0;
+}
+#hiscore-table table {
+    border-collapse: collapse;
+}
+#hiscore-table table thead {
+    background-color: rgb(243, 105, 26);
+}
+#hiscore-table table thead th {
+    padding: 10px 15px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 414px) {
+    main {
+        height: 100vh;
+        border-radius: 0;
+    }
+    #game-conainer {
+        width: 100vw !important;
+    }
+}

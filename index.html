@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To the top - game</title>
+    <script src="./main.js"></script>
+    <!-- <script src="./app.js"></script> -->
+    <link href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <main id="container">
+        <div id="lives-container" class="hide"></div>
+        <div class="score-container hide"><span class="score-text">Your score</span><span id="score-container">0</span></div>
+        <div class="multiply"><span>x</span><span id="multiply">1</span></div>
+        <div id="to-next-bonus">
+            <span id="new-object"></span>
+            <span id="next-multiply"></span>
+        </div>
+        <div id="main-screen">
+            <img class="main-logo" src="./assets/images/main-logo.png">
+        </div>
+        <div id="game-start-counter" class="hide">3</div>
+        <div id="game-container" class="hidden"></div>
+        <button id="start-game">Start Game</button>
+        <audio id="multiply-sound" src="./assets/sounds/multiply.mp3" type="audio/mpeg"></audio>
+        <audio id="whoosh" src="./assets/sounds/whoosh.mp3" type="audio/mpeg"></audio>
+        <button id="btn-settings"><img src="./assets/images/settings.png"></button>
+        <button id="btn-hiscore"><img src="./assets/images/hiscore.png"></button>
+        <a id="btn-yt" target="blank" href="#"><img src="./assets/images/youtube_social_circle_red.png"></a>
+        <div id="settings">
+            <div id="sound" class="setting">
+                <p>sound</p>
+                <button data-value="true" class="btn active">on</button>
+                <button data-value="false" class="btn">off</button>
+            </div>
+            <div id="live-on-move" class="setting">
+                <p>remove live on auto move</p>
+                <button data-value="true" class="btn active">on</button>
+                <button data-value="false" class="btn">off</button>
+            </div>
+            <div id="move-one" class="setting">
+                <p>move one object on click</p>
+                <button data-value="true" class="btn">on</button>
+                <button data-value="false" class="btn active">off</button>
+            </div>
+        </div>
+        <div id="hiscore-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Place</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="hiscore-tbody"></tbody>
+            </table>
+        </div>
+        <div id="finish" class="hide"></div>
+    </main>
+</body>
+</html>
